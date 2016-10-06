@@ -1,0 +1,19 @@
+{
+  "name": "smartsystem",
+  "version": "1.0.0",
+  "description": "wraps systemjs for smarter workflows",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "(npmts)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/pushrocks/smartsystem.git"
+  },
+  "author": "Lossless GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/pushrocks/smartsystem/issues"
+  },
+  "homepage": "https://gitlab.com/pushrocks/smartsystem#README"
+}
