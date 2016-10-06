@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://gitlab.com/pushrocks/smartsystem/issues"
   },
-  "homepage": "https://gitlab.com/pushrocks/smartsystem#README"
+  "homepage": "https://gitlab.com/pushrocks/smartsystem#README",
+  "dependencies": {
+    "@types/q": "0.0.32",
+    "lik": "^1.0.24",
+    "q": "^1.4.1"
+  }
 }
