@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "wraps systemjs for smarter workflows",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "(npmts)"
   },
@@ -19,6 +20,11 @@
   "dependencies": {
     "@types/q": "0.0.32",
     "lik": "^1.0.24",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "systemjs": "^0.19.39"
+  },
+  "devDependencies": {
+    "@types/should": "^8.1.30",
+    "should": "^11.1.1"
   }
 }
