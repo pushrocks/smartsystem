@@ -27,7 +27,7 @@ import * as _myPlugin from 'myPlugin' // plugin does not get loaded here at runt
 let myPluginLazy = new LazyModule<typeof _myPlugin>('myPlugin')
 
 import * as _anotherPlugin from 'anotherPlugin' // plugin does not get loaded here at runtime
-let anotherPluginPromised = LazyModule<typeof _anotherPlugin>('anotherPlugin')
+let anotherPluginLazy = new LazyModule<typeof _anotherPlugin>('anotherPlugin')
 
 myPluginLazy.whenLoaded.then(myPlugin => {
     /* do something with myPlugin. 
