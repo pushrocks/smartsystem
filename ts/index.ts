@@ -1,4 +1,4 @@
-import * as plugins from './smartsystem.plugins'
+import 'typings-global'
 
 import * as q from 'q'
 import { Objectmap } from 'lik'

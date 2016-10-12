@@ -21,7 +21,8 @@
     "@types/q": "0.0.32",
     "lik": "^1.0.24",
     "q": "^1.4.1",
-    "systemjs": "^0.19.39"
+    "systemjs": "^0.19.39",
+    "typings-global": "^1.0.14"
   },
   "devDependencies": {
     "@types/should": "^8.1.30",

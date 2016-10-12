@@ -1,4 +1,5 @@
 /// <reference types="q" />
+import 'typings-global';
 import * as q from 'q';
 /**
  * defines a LazyModule
