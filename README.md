@@ -23,11 +23,11 @@ We recommend the use of TypeScript for best Intellisense
 ```typescript
 import { LazyModule } from 'smartsystem'
 
-import * as myPluginType from 'myPlugin' // plugin does not get loaded here at runtime
-let myPluginLazy = new LazyModule<typeof myPlugin>('myPlugin')
+import * as _myPlugin from 'myPlugin' // plugin does not get loaded here at runtime
+let myPluginLazy = new LazyModule<typeof _myPlugin>('myPlugin')
 
-import * as anotherPluginType from 'anotherPlugin' // plugin does not get loaded here at runtime
-let anotherPluginPromised = LazyModule<typeof anotherPlugin>('anotherPlugin')
+import * as _anotherPlugin from 'anotherPlugin' // plugin does not get loaded here at runtime
+let anotherPluginPromised = LazyModule<typeof _anotherPlugin>('anotherPlugin')
 
 myPluginLazy.whenLoaded.then(myPlugin => {
     /* do something with myPlugin. 
