@@ -1,5 +1,6 @@
 import 'typings-global'
 
+import * as path from 'path'
 import * as q from 'q'
 import { Objectmap } from 'lik'
 let systemjs = require('systemjs')
@@ -32,6 +33,9 @@ export class LazyModule<T> {
         this.cwd = cwdArg
         smartsystem.addLazyModule(this) // add module to smartsystem instance
         this.nameIsPath = /\.\//.test(this.name) // figure out if name is path
+        if (this.nameIsPath) {
+            this.name = path.join(this.cwd,this.name)
+        }
         this.whenLoadedDeferred = q.defer<T>()
         this.whenLoaded = this.whenLoadedDeferred.promise
     }

@@ -1,7 +1,7 @@
 {
   "name": "smartsystem",
   "version": "1.0.4",
-  "description": "wraps systemjs for smarter workflows",
+  "description": "simplifies lazy loading with TypeScript",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -11,6 +11,11 @@
     "type": "git",
     "url": "git+ssh://git@gitlab.com/pushrocks/smartsystem.git"
   },
+  "keywords": [
+    "TypeScript",
+    "lazy",
+    "module loader"
+  ],
   "author": "Lossless GmbH",
   "license": "MIT",
   "bugs": {
