@@ -1,6 +1,6 @@
 {
   "name": "smartsystem",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "wraps systemjs for smarter workflows",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
