@@ -5,7 +5,10 @@ import * as q from 'q';
  */
 export declare class LazyModule<T> {
     name: string;
+    nameIsPath: boolean;
     cwd: string;
+    whenLoaded: q.Promise<T>;
+    private whenLoadedDeferred;
     constructor(nameArg: string, cwdArg?: string);
     /**
      * loads the module

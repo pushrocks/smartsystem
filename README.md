@@ -21,17 +21,24 @@ simplifies lazy loading with TypeScript
 We recommend the use of TypeScript for best Intellisense
 
 ```typescript
-import {LazyModule, loadNow } from 'smartsystem'
+import { LazyModule } from 'smartsystem'
 
 import * as myPluginType from 'myPlugin' // plugin does not get loaded here at runtime
-let myPluginPromised = LazyModule<typeof myPlugin>('myPlugin')
+let myPluginLazy = new LazyModule<typeof myPlugin>('myPlugin')
 
 import * as anotherPluginType from 'anotherPlugin' // plugin does not get loaded here at runtime
 let anotherPluginPromised = LazyModule<typeof anotherPlugin>('anotherPlugin')
 
-myPluginPromised.then(myPlugin => { /* do something with myPlugin */ })
-myPlugin.also(anotherPluginPromised).then((m,a) => {}) // also takes multiple other plugins
+myPluginLazy.whenLoaded.then(myPlugin => {
+    /* do something with myPlugin. 
+       myPlugin receives the typings flow from LazyModule class
+       This does NOT load the module during runtime
+       The promise whenLoaded will be resolved whenever load() is called for the first time */
+})
 
-loadNow.only('myPlugin') // loads myPlugin and resolved the lazy promise
-loadNow.also('myPlugin') // loads myPlugin and any chained 'also' modules
+myPluginLazy.load().then(myPlugin => {
+    /* do something with myPlugin. 
+       myPlugin receives the typings flow from LazyModule class
+       This DOES LOAD the module */
+})
 ```

@@ -5,16 +5,14 @@ import { Objectmap } from 'lik'
 let systemjs = require('systemjs')
 
 class Smartsystem {
-    lazyModules = new Objectmap<LazyModule>()
+    lazyModules = new Objectmap<LazyModule<any>>()
 
     /**
      * add lazyModule to Smartsystem
      */
-    addLazyModule(lazyModuleArg: LazyModule) {
+    addLazyModule(lazyModuleArg: LazyModule<any>) {
         this.lazyModules.add(lazyModuleArg)
     }
-
-    loadLazyModule(lazyModuleArg: LazyModule)
 }
 
 // create the internal smartsystem
@@ -25,11 +23,17 @@ let smartsystem = new Smartsystem()
  */
 export class LazyModule<T> {
     name: string
+    nameIsPath: boolean
     cwd: string
-    constructor(nameArg: string, cwdArg: string = process.cwd()){
+    whenLoaded: q.Promise<T>
+    private whenLoadedDeferred: q.Deferred<T>
+    constructor(nameArg: string, cwdArg: string = process.cwd()) {
         this.name = nameArg
         this.cwd = cwdArg
-        smartsystem.addLazyModule(this)
+        smartsystem.addLazyModule(this) // add module to smartsystem instance
+        this.nameIsPath = /\.\//.test(this.name) // figure out if name is path
+        this.whenLoadedDeferred = q.defer<T>()
+        this.whenLoaded = this.whenLoadedDeferred.promise
     }
 
     /**
@@ -40,8 +44,9 @@ export class LazyModule<T> {
         let loadedModule: T
         systemjs.import(this.name).then((m) => {
             loadedModule = m
+            this.whenLoadedDeferred.resolve(loadedModule)
             done.resolve(loadedModule)
-        })
+        }).catch(err => { console.log(err) })
         return done.promise
     }
 
