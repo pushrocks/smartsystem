@@ -20,14 +20,18 @@ simplifies lazy loading with TypeScript
 ## Usage
 We recommend the use of TypeScript for best Intellisense
 
+smartsystem supports both npm and SystemJs as module loader.
+
 ```typescript
 import { LazyModule } from 'smartsystem'
 
 import * as _myPlugin from 'myPlugin' // plugin does not get loaded here at runtime
 let myPluginLazy = new LazyModule<typeof _myPlugin>('myPlugin')
+let myPluginLazy.setLoader('npm') // sets the loader, defaults to npm anyway
 
 import * as _anotherPlugin from 'anotherPlugin' // plugin does not get loaded here at runtime
 let anotherPluginLazy = new LazyModule<typeof _anotherPlugin>('anotherPlugin')
+let anotherPluginLazy.setLoader('systemjs') // sets the loader to systemjs
 
 myPluginLazy.whenLoaded.then(myPlugin => {
     /* do something with myPlugin. 
