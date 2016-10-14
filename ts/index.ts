@@ -3,7 +3,6 @@ import 'typings-global'
 import * as path from 'path'
 import * as q from 'q'
 import { Objectmap } from 'lik'
-let systemjs = require('systemjs')
 
 class Smartsystem {
     lazyModules = new Objectmap<LazyModule<any>>()
@@ -54,17 +53,19 @@ export class LazyModule<T> {
     load(): q.Promise<T> {
         let done = q.defer<T>()
         let loadedModule: T
-        let loadingPath: string
         if (this.loader === 'npm') {
-            loadingPath = require.resolve(this.name)
-        } else {
-            loadingPath = this.name
-        }
-        systemjs.import(loadingPath).then((m) => {
-            loadedModule = m
-            this.whenLoadedDeferred.resolve(loadedModule)
+            loadedModule = require(this.name)
             done.resolve(loadedModule)
-        }).catch(err => { console.log(err) })
+        } else if (this.loader === 'systemjs') {
+            let systemjs = require('systemjs')
+            systemjs.import(this.name).then((m) => {
+                loadedModule = m
+                this.whenLoadedDeferred.resolve(loadedModule)
+                done.resolve(loadedModule)
+            }).catch(err => { console.log(err) })
+        } else {
+            throw Error('loader not supported')
+        }
         return done.promise
     }
 
