@@ -22,7 +22,7 @@ We recommend the use of TypeScript for best Intellisense
 
 smartsystem supports both npm and SystemJs as module loader.
 
-```typescript
+```javascript
 import { LazyModule } from 'smartsystem'
 
 import * as _myPlugin from 'myPlugin' // plugin does not get loaded here at runtime
