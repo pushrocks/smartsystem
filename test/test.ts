@@ -6,7 +6,7 @@ import * as _moduleExample from './moduleExample'
 
 describe('smartsystem', function () {
     it('should load a module lazily', function (done) {
-        let lazyModuleExample = new smartsystem.LazyModule<typeof _moduleExample>('./test/moduleExample.js')
+        let lazyModuleExample = new smartsystem.LazyModule<typeof _moduleExample>('../test/moduleExample.js',__dirname)
 
         lazyModuleExample.load().then(m => {
             console.log(m.exportedTestBoolean)

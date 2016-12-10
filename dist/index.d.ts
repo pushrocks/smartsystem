@@ -12,7 +12,7 @@ export declare class LazyModule<T> {
     whenLoaded: q.Promise<T>;
     loader: TLoader;
     private whenLoadedDeferred;
-    constructor(nameArg: string, cwdArg?: string);
+    constructor(nameArg: string, cwdArg: string);
     setLoader(loaderArg: TLoader): void;
     /**
      * loads the module

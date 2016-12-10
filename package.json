@@ -24,14 +24,14 @@
   "homepage": "https://gitlab.com/pushrocks/smartsystem#README",
   "dependencies": {
     "@types/q": "0.0.32",
-    "lik": "^1.0.24",
+    "lik": "^1.0.27",
     "q": "^1.4.1",
-    "systemjs": "^0.19.39",
+    "systemjs": "^0.19.41",
     "typings-global": "^1.0.14"
   },
   "devDependencies": {
     "@types/should": "^8.1.30",
-    "should": "^11.1.1",
+    "should": "^11.1.2",
     "typings-test": "^1.0.3"
   }
 }

@@ -31,7 +31,10 @@ export class LazyModule<T> {
     whenLoaded: q.Promise<T>
     loader: TLoader = 'npm'
     private whenLoadedDeferred: q.Deferred<T>
-    constructor(nameArg: string, cwdArg: string = process.cwd()) {
+    constructor(nameArg: string, cwdArg: string) {
+        if (!cwdArg) {
+            throw new Error('You must specify a directory to resolve from!')
+        }
         this.name = nameArg
         this.cwd = cwdArg
         smartsystem.addLazyModule(this) // add module to smartsystem instance
