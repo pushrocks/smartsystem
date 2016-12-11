@@ -46,3 +46,5 @@ myPluginLazy.load().then(myPlugin => {
        This DOES LOAD the module */
 })
 ```
+
+[![npm](https://push.rocks/assets/repo-header.svg)](https://push.rocks)
