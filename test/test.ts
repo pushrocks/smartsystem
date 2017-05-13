@@ -1,16 +1,13 @@
-import 'typings-test'
-import * as should from 'should'
+import { tap, expect } from 'tapbundle'
 import * as smartsystem from '../dist/index'
+import * as _moduleExample from './assets/moduleExample'
 
-import * as _moduleExample from './moduleExample'
+tap.test('should load a module lazily', async (tools) => {
+  let lazyModuleExample = new smartsystem.LazyModule<typeof _moduleExample>('./assets/moduleExample.js', __dirname)
 
-describe('smartsystem', function () {
-    it('should load a module lazily', function (done) {
-        let lazyModuleExample = new smartsystem.LazyModule<typeof _moduleExample>('../test/moduleExample.js',__dirname)
-
-        lazyModuleExample.load().then(m => {
-            console.log(m.exportedTestBoolean)
-            done()
-        })
-    })
+  await lazyModuleExample.load().then(async m => {
+    console.log(m.exportedTestBoolean)
+  })
 })
+
+tap.start()
