@@ -1,3 +1,7 @@
+---
+name: smartsystem
+description: simplifies lazy loading with TypeScript
+---
 # smartsystem
 simplifies lazy loading with TypeScript
 
@@ -32,15 +36,11 @@ import * as _myPlugin from 'myPlugin'
 // define the lazy module
 let myLazyModule = new LazyModule<typeof _myPlugin>('myPlugin', __dirname)
 
-// set the loader, defaults to npm anyway, can be systemjs alternatively
-myLazyModule.setLoader('npm') 
-
 // another plugin
 import * as _anotherPlugin from 'anotherPlugin' // plugin does not get loaded here at runtime
 
 // define lazy module
 let anotherLazyModule = new LazyModule<typeof _anotherPlugin>('anotherPlugin', __dirname)
-anotherPluginLazy.setLoader('systemjs') // sets the loader to systemjs
 
 myLazyModule.whenLoaded.then(myPlugin => {
     /* do something with myPlugin. 
