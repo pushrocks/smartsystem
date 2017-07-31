@@ -1,6 +1,6 @@
 {
   "name": "smartsystem",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "simplifies lazy loading with TypeScript",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
