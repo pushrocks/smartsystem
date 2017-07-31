@@ -26,12 +26,11 @@ export type TLoader = 'npm' | 'systemjs'
 
 export class LazyModule<T> {
   name: string
-  nameIsPath: boolean
   cwd: string
   whenLoaded: Promise<T>
-  loader: TLoader = 'npm'
+  private nameIsPath: boolean
   private whenLoadedDeferred: smartq.Deferred<T>
-  constructor(nameArg: string, cwdArg: string) {
+  constructor (nameArg: string, cwdArg: string) {
     if (!cwdArg) {
       throw new Error('You must specify a directory to resolve from!')
     }
@@ -46,36 +45,12 @@ export class LazyModule<T> {
     this.whenLoaded = this.whenLoadedDeferred.promise
   }
 
-  setLoader (loaderArg: TLoader) {
-    this.loader = loaderArg
-  }
-
   /**
    * loads the module
    */
-  load (): Promise<T> {
-    let done = smartq.defer<T>()
-    let loadedModule: T
-    if (this.loader === 'npm') {
-      loadedModule = require(this.name)
-      done.resolve(loadedModule)
-    } else if (this.loader === 'systemjs') {
-      let systemjs = require('systemjs')
-      systemjs.import(this.name).then((m) => {
-        loadedModule = m
-        this.whenLoadedDeferred.resolve(loadedModule)
-        done.resolve(loadedModule)
-      }).catch(err => { console.log(err) })
-    } else {
-      throw Error('loader not supported')
-    }
-    return done.promise
-  }
-
-  /**
-   * loads additional lazy modules specified as arguments and returns them in the promise for easy use
-   */
-  loadAlso (...args: LazyModule<any>[]) {
-
+  async load (): Promise<T> {
+    let loadedModule: T = require(this.name)
+    this.whenLoadedDeferred.resolve(loadedModule)
+    return loadedModule
   }
 }

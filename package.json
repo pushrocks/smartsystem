@@ -23,12 +23,12 @@
   },
   "homepage": "https://gitlab.com/pushrocks/smartsystem#README",
   "dependencies": {
-    "lik": "^1.0.30",
-    "smartq": "^1.1.1",
-    "systemjs": "^0.20.12",
-    "typings-global": "^1.0.19"
+    "lik": "^1.0.38",
+    "smartq": "^1.1.6",
+    "systemjs": "^0.20.17",
+    "typings-global": "^1.0.20"
   },
   "devDependencies": {
-    "tapbundle": "^1.0.12"
+    "tapbundle": "^1.1.1"
   }
 }
