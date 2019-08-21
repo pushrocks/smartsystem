@@ -1,6 +1,6 @@
 {
   "name": "smartsystem",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "interact with the system you are running on",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
