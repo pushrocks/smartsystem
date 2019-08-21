@@ -1,11 +1,12 @@
 {
   "name": "smartsystem",
   "version": "2.0.2",
-  "description": "simplifies lazy loading with TypeScript",
+  "description": "interact with the system you are running on",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "(npmts)"
+    "test": "(tstest test/)",
+    "build": "(tsbuild)"
   },
   "repository": {
     "type": "git",
@@ -23,12 +24,27 @@
   },
   "homepage": "https://gitlab.com/pushrocks/smartsystem#README",
   "dependencies": {
-    "lik": "^1.0.38",
-    "smartq": "^1.1.6",
-    "systemjs": "^0.20.17",
-    "typings-global": "^1.0.20"
+    "@pushrocks/lik": "^3.0.10",
+    "@pushrocks/smartenv": "^4.0.7",
+    "@pushrocks/smartpromise": "^3.0.2"
   },
   "devDependencies": {
-    "tapbundle": "^1.1.1"
-  }
+    "@gitzone/tsbuild": "^2.1.11",
+    "@gitzone/tstest": "^1.0.24",
+    "@pushrocks/tapbundle": "^3.0.11",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0"
+  },
+  "private": false,
+  "files": [
+    "ts/*",
+    "ts_web/*",
+    "dist/*",
+    "dist_web/*",
+    "dist_ts_web/*",
+    "assets/*",
+    "cli.js",
+    "npmextra.json",
+    "readme.md"
+  ]
 }

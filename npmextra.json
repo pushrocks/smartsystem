@@ -1,7 +1,17 @@
 {
-    "npmci": {
-        "globalNpmTools": [
-            "npmts"
-        ]
+  "npmci": {
+    "globalNpmTools": [
+      "npmts"
+    ]
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "pushrocks",
+      "gitrepo": "smartsystem",
+      "shortDescription": "interact with the system you are running on",
+      "npmPackagename": "@pushrocks/smartsystem",
+      "license": "MIT"
     }
+  }
 }
