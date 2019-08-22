@@ -9,7 +9,7 @@ tap.test('should create a smartsystem instance', async tools => {
 });
 
 tap.test('should state the operating system', async () => {
-  expect(smartsystemInstance.cpuCount);
+  expect(smartsystemInstance.cpus.length).to.be.greaterThan(0);
 });
 
 tap.start();
