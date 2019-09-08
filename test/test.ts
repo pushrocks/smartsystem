@@ -12,4 +12,8 @@ tap.test('should state the operating system', async () => {
   expect(smartsystemInstance.cpus.length).to.be.greaterThan(0);
 });
 
+tap.test('should get systeminformation', async () => {
+  console.log(await smartsystemInstance.information.networkInterfaceDefault());
+});
+
 tap.start();
